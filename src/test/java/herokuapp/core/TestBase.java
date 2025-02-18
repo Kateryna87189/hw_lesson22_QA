@@ -19,7 +19,7 @@ public class TestBase {
         app.init();
     }
 
-    @AfterMethod(enabled = false)
+    @AfterMethod
     public void tearDown(Method method, ITestResult result) {
 
         if (result.isSuccess()){

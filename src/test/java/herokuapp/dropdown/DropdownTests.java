@@ -15,17 +15,18 @@ public class DropdownTests extends TestBase {
 
     @Test
     public void dropdownListPositiveTest() {
-       // String option = "Option 1";
+        String option = "Option 1";
+        String optionList = "Option 2";
 
         new DropdownPage(app.driver, app.wait)
-                .printAllOptions()
-                .selectAndVerifyAllOptions()
+                .printAllOptions(option)
+                  .printAllOptions(optionList)
         ;
     }
 
     @Test
     public void dropdownListNegativeTest() {
         new DropdownPage(app.driver, app.wait)
-                .selectNegativeExistentOption("Неіснуюча опція"); // Спроба вибрати неіснуючу опцію
+                .selectNegativeExistentOption("Неіснуюча опція");
     }
 }

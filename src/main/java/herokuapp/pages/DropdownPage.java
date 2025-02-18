@@ -20,7 +20,7 @@ public class DropdownPage extends BasePage {
     WebElement dropdown;
 
     // Метод для вибору опції за текстом
-    public DropdownPage printAllOptions() {
+    public DropdownPage printAllOptions(String option) {
         Select select = new Select(dropdown);
         List<WebElement> options = select.getOptions();
         System.out.println("Available options:");
@@ -29,7 +29,7 @@ public class DropdownPage extends BasePage {
         }
         return this;
     }
-    public DropdownPage selectAndVerifyAllOptions() {
+    public DropdownPage selectAndVerifyAllOptions(String optionsList) {
         Select select = new Select(dropdown);
         List<WebElement> options = select.getOptions();
         for (WebElement option : options) {
