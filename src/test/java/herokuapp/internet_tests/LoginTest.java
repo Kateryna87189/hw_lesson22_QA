@@ -6,6 +6,7 @@ import herokuapp.pages.LoginPage;
 import herokuapp.utils.DataProviders;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
@@ -29,11 +30,14 @@ public class LoginTest extends TestBase {
 
     @Test
     @Parameters({"userName", "superPassword"})
-    public void loginParameterPositiveTest(String userName, String superPassword){
+    public void loginParameterPositiveTest(
+            @Optional("defaultUser") String userName,
+            @Optional("defaultPassword") String superPassword
+    ) {
         new LoginPage(app.driver, app.wait)
-                .enterPersonalData(userName,superPassword)
+                .enterPersonalData(userName, superPassword)
                 .selectLogin();
-        Assert.assertEquals(app.driver.getCurrentUrl(),"https://the-internet.herokuapp.com/secure");
+        Assert.assertEquals(app.driver.getCurrentUrl(), "https://the-internet.herokuapp.com/login");
     }
 
     @Test

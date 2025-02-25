@@ -1,16 +1,16 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-
 <suite name="data" verbose="1">
     <test name="data">
+        <!-- Ось тут мають бути параметри -->
+        <parameter name="userName" value="tomsmith"/>
+        <parameter name="superPassword" value="SuperSecretPassword!"/>
+
         <classes>
             <class name="herokuapp.internet_tests.LoginTest">
                 <methods>
                     <include name=".*Parameter.*"/>
                 </methods>
             </class>
-            <parameter name="userName" value="tomsmith"/>
-            <parameter name="superPassword" value="SuperSecretPassword!"/>
-
         </classes>
     </test>
 </suite>
