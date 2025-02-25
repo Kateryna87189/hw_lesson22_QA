@@ -10,6 +10,7 @@ public class HomePage extends BasePage {
     public HomePage(WebDriver driver, WebDriverWait wait) {
         super(driver, wait);
     }
+    public static final String HOME_PAGE_URL = "https://the-internet.herokuapp.com";
     @FindBy(xpath="//a[contains(text(),'Form Authentication')]")
      WebElement formAuthentication;
 

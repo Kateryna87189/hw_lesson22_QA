@@ -1,4 +1,4 @@
-package herokuapp.authentication;
+package herokuapp.internet_tests;
 
 import herokuapp.core.TestBase;
 import herokuapp.pages.HomePage;
@@ -6,15 +6,18 @@ import herokuapp.pages.LoginPage;
 import herokuapp.utils.DataProviders;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+
+import static herokuapp.pages.HomePage.HOME_PAGE_URL;
 
 public class LoginTest extends TestBase {
 
 
     @BeforeMethod
     public void preCondition(){
-        new HomePage(app.driver,app.wait).getFormAuthentication();
-        new LoginPage(app.driver,app.wait).selectLogin();
+
+        app.driver.get(HOME_PAGE_URL + "/login");
     }
     @Test
     public void loginPositiveTest(){
@@ -23,6 +26,16 @@ public class LoginTest extends TestBase {
                .selectLogin();
       Assert.assertEquals(app.driver.getCurrentUrl(),"https://the-internet.herokuapp.com/secure");
     }
+
+    @Test
+    @Parameters({"userName", "superPassword"})
+    public void loginParameterPositiveTest(String userName, String superPassword){
+        new LoginPage(app.driver, app.wait)
+                .enterPersonalData(userName,superPassword)
+                .selectLogin();
+        Assert.assertEquals(app.driver.getCurrentUrl(),"https://the-internet.herokuapp.com/secure");
+    }
+
     @Test
     public void loginNegativeTest(){
         new LoginPage(app.driver, app.wait)

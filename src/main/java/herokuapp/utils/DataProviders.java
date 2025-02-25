@@ -14,14 +14,14 @@ public class DataProviders {
 
     }
 
-    @DataProvider
-    public Object[][] framesNamePositiveProvider() {
-        return new Object[][]{
-                {"frame-top", "frame-left", "LEFT"},
-                {"frame-top", "frame-middle", "MIDDLE"},
-                {"frame-top", "frame-right", "RIGHT"},
-                {"*", "frame-bottom", "BOTTOM"}
-
-        };
-    }
+//    @DataProvider
+//    public Object[][] framesNamePositiveProvider() {
+//        return new Object[][]{
+//                {"frame-top", "frame-left", "LEFT"},
+//                {"frame-top", "frame-middle", "MIDDLE"},
+//                {"frame-top", "frame-right", "RIGHT"},
+//                {"*", "frame-bottom", "BOTTOM"}
+//
+//        };
+//    }
 }

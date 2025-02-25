@@ -34,7 +34,7 @@ public class ApplicationManager {
                 driver = new ChromeDriver();
         }
 
-        driver.get("https://the-internet.herokuapp.com/");
+       // driver.get("https://the-internet.herokuapp.com/");
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));

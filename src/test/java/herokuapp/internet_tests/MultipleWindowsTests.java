@@ -1,16 +1,18 @@
-package herokuapp.multiple_windows;
+package herokuapp.internet_tests;
 
 import herokuapp.core.TestBase;
-import herokuapp.pages.HomePage;
 import herokuapp.pages.MultiplePage;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+
+import static herokuapp.pages.HomePage.HOME_PAGE_URL;
 
 public class MultipleWindowsTests extends TestBase {
 
     @BeforeMethod
     public void preCondition(){
-        new HomePage(app.driver,app.wait).getMultipleWindows().hideAds();
+
+        app.driver.get(HOME_PAGE_URL + "/windows");
     }
 
     @Test

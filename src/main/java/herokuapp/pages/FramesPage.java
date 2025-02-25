@@ -14,40 +14,46 @@ public class FramesPage extends BasePage {
     }
 
     @FindBy(tagName = "frame")
-    List<WebElement> frames;
+    List<WebElement> iframes;
 
     public FramesPage getListOfFrames() {
-        int numberOfFrames = ((Long) js.executeScript("return window.frames.length")).intValue();
-        //System.out.println("Number of frames: " + numberOfFrames);
-        if (frames == null || frames.isEmpty()) {
-            System.out.println("No frames found");
-            return this;
-        }
-        System.out.println("Number of frames: " + numberOfFrames);
-        System.out.println("Number of frames: " + frames.size());
-        for (WebElement frame : frames) {
-            String frameId = frame.getAttribute("id");
-            String frameSrc = frame.getAttribute("src");
-            System.out.println("Frame found ID: " +
-                    (frameId != null ? frameId : "No ID") + " SRC: " + (frameSrc != null ? frameSrc : "No SRC"));
+        System.out.println("Number of iFrames on the page are: [" + iframes.size() + "]");
 
+        for(WebElement iframe : iframes){
+            String iFrameNAME = iframe.getAttribute("name");
+            String iFrameSRC = iframe.getAttribute("src");
+            System.out.println("Iframe found NAME: [" + (iFrameNAME != null ? iFrameNAME : "No ID") + "], SRC: [" + (iFrameSRC != null ? iFrameSRC : "No SRC") + "]");
         }
         return this;
     }
 
-    public FramesPage switchToFrameByIndex(int index) {
+    public FramesPage switchToIframeByIndex(int index) {
         driver.switchTo().frame(index);
         return this;
     }
 
-    public FramesPage switchToFrameByFrameName(String parent, String child) {
-        driver.switchTo().defaultContent();// выходим из всех фреймов
-        // если родительский фрейм существует (не "*"), переключаемся на него
-        if (!parent.equals("*")) {
-            driver.switchTo().frame(parent); // переключаемся в родительский frame
-        }
-        driver.switchTo().frame(child); // переключаемся в frame-right
+    @FindBy(xpath = "/html/body")
+    WebElement bodyLocator;
 
+    public FramesPage verifyIframeText(String text) {
+        shouldHaveText(bodyLocator,text, 5000);
         return this;
     }
+
+    public FramesPage switchToIframeByName(String name) {
+        // scrollTo(500);
+        driver.switchTo().frame(name);
+        return this;
+    }
+
+    public FramesPage stepUp() {
+        driver.switchTo().parentFrame();
+        return this;
+    }
+
+    public FramesPage exitFromAllFrames() {
+        driver.switchTo().defaultContent();
+        return this;
+    }
+
 }

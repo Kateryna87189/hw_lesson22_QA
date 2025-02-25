@@ -1,15 +1,17 @@
-package herokuapp.dropdown;
+package herokuapp.internet_tests;
 
 import herokuapp.core.TestBase;
 import herokuapp.pages.DropdownPage;
-import herokuapp.pages.HomePage;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+
+import static herokuapp.pages.HomePage.HOME_PAGE_URL;
 
 public class DropdownTests extends TestBase {
     @BeforeMethod
     public void preCondition(){
-        new HomePage(app.driver,app.wait).getDropdownPage().hideAds();
+
+        app.driver.get(HOME_PAGE_URL + "/dropdown");
     }
 
 
