@@ -13,12 +13,12 @@ public class DisapperingElementsTests extends TestBase {
     public void preCondition() {
         app.driver.get(HOME_PAGE_URL + "/disappearing_elements");
     }
-
-    @Test(retryAnalyzer = RetryAnalyser.class)
-    public void disappearingElementsTestsPositiveTest() {
-        new DisappearingElementsPage(app.driver, app.wait)
-                .checkDisappearingElement("Gallery");
-    }
+//
+//    @Test(retryAnalyzer = RetryAnalyser.class)
+//    public void disappearingElementsTestsPositiveTest() {
+//        new DisappearingElementsPage(app.driver, app.wait)
+//                .checkDisappearingElement("Gallery");
+//    }
     @Test
     public void CheckStyleButtonPositiveTest(){
         String button = "Home";

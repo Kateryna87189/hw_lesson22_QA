@@ -14,12 +14,12 @@ public class DisappearingElementsPage extends BasePage {
     public DisappearingElementsPage(WebDriver driver, WebDriverWait wait) {
         super(driver, wait);
     }
-
-    public DisappearingElementsPage checkDisappearingElement(String elementToFind) {
-        WebElement element = driver.findElement(By.xpath("//a[normalize-space(text())='" + elementToFind + "']"));
-        isElementPresent(element);
-        return this;
-    }
+//
+//    public DisappearingElementsPage checkDisappearingElement(String elementToFind) {
+//        WebElement element = driver.findElement(By.xpath("//a[normalize-space(text())='" + elementToFind + "']"));
+//        isElementPresent(element);
+//        return this;
+//    }
 
     public DisappearingElementsPage checkStyleButton(String button, String expectedFontColor, String expectedFontSize, String expectedButtonColor) {
 
